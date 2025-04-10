@@ -1,0 +1,58 @@
+{% load static %}
+
+<div class="grid grid-cols-1 md:grid-cols-12 md:gap-5 md:container md:mx-auto items-center">
+  <div class="hidden md:col-span-4 md:block border-2 rounded-xl hover:shadow-xl">
+    <div class="flex justify-between px-5 mb-3">
+      <h1>Category</h1>
+      <h3><a href="">See all</a></h3>
+    </div>
+    <div class="px-5 pb-5 mt-3">
+      <form class="space-y-3">
+        {% if categories %}
+          {% for cat in categories %}
+            <div class="form-control">
+              <label class="flex cursor-pointer gap-2" onclick="window.location.href = '{% url 'category_wise' cat.slug %}'">
+                <input type="radio" name="radio-9" class="radio" />
+                <a onclick="document.getElementById('{{ cat.slug }}').checked = true; return false;">{{ cat.name }}</a>
+              </label>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p>No Available Category</p>
+        {% endif %}
+      </form>
+    </div>
+  </div>
+  <div class="md:col-span-8 col-span-2">
+    <div class="carousel w-full">
+      <div id="slide1" class="carousel-item relative w-full">
+        <img src="{% static 'media/carousel_images/sl1.png' %}" class="w-full" />
+        <div class="absolute left-5 right-5 top-1/2 hidden sm:flex -translate-y-1/2 transform sm:justify-between">
+          <a href="#slide4" class="btn btn-xs sm:btn-md btn-circle">❮</a>
+          <a href="#slide2" class="btn btn-xs sm:btn-md btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide2" class="carousel-item relative w-full">
+        <img src="{% static 'media/carousel_images/sl2.jpg' %}" class="w-full" />
+        <div class="absolute left-5 right-5 top-1/2 hidden sm:flex -translate-y-1/2 transform sm:justify-between">
+          <a href="#slide1" class="btn btn-xs sm:btn-md btn-circle">❮</a>
+          <a href="#slide3" class="btn btn-xs sm:btn-md btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide3" class="carousel-item relative w-full">
+        <img src="{% static 'media/carousel_images/sl3.jpg' %}" class="w-full" />
+        <div class="absolute left-5 right-5 top-1/2 hidden sm:flex -translate-y-1/2 transform sm:justify-between">
+          <a href="#slide2" class="btn btn-xs sm:btn-md btn-circle">❮</a>
+          <a href="#slide4" class="btn btn-xs sm:btn-md btn-circle">❯</a>
+        </div>
+      </div>
+      <div id="slide4" class="carousel-item relative w-full">
+        <img src="{% static 'media/carousel_images/sl4.jpg' %}" class="w-full" />
+        <div class="absolute left-5 right-5 top-1/2 hidden sm:flex -translate-y-1/2 transform sm:justify-between">
+          <a href="#slide3" class="btn btn-xs sm:btn-md btn-circle">❮</a>
+          <a href="#slide1" class="btn btn-xs sm:btn-md btn-circle">❯</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

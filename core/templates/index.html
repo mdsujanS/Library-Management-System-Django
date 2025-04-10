@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+{% block title %}
+  Home
+{% endblock %}
+{% load static %}
+
+{% block hero %}
+  {% include 'header.html' %}
+{% endblock %}
+
+{% block main_content %}
+  <div class="container mx-auto mt-3">
+    <div class="header-text">
+      <div class="flex justify-between items-center my-3">
+        <h1 class="font-bold text-xl">Most Popular Books Weekly</h1>
+        {% if books %}
+          <button class="btn btn-xs sm:btn-md btn-outline"><a href="{% url 'show_all_books' %}">See All</a></button>
+        {% else %}
+          <button class="btn btn-xs sm:btn-md btn-outline" disabled><a href="{% url 'show_all_books' %}">See All</a></button>
+        {% endif %}
+      </div>
+    </div>
+
+    <div class="">
+      <div class="grid grid-cols-2 md:grid-cols-12 sm:gap-5 gap-2 my-5">
+        {% if books %}
+          {% for book in books %}
+            <div class="col-span-1 sm:col-span-3 lg:col-span-2 hover:drop-shadow-lg" id="card-wrap">
+              <div id="card" class="card card-compact bg-base-100 shadow-xl">
+                <figure onclick="window.location.href = '{% url 'book_detail' book.title book.id %}'">
+                  <img id="img" src="{{ book.book_image.url }}" alt="Book" />
+                </figure>
+                <div class="card-body">
+                  <h2 class="text-2xl leading-none">{{ book.title|truncatewords:3 }}</h2>
+                  <p class="leading-none ml-2 text-lg italic">
+                    by <a class="hover:not-italic" href="">{{ book.author }}</a>
+                  </p>
+                  <div class="card-text text-center">
+                    <p>{{ book.description|truncatechars:50 }}</p>
+                    <h3 title="Now Borrow Price Tk. " class="flex items-center justify-end mr-4"><span class="line-through italic text-base">TK. {{ book.borrow_price }}</span><span class="ml-1 hover:italic text-xl font-semibold">TK. {{ book.price }}</span></h3>
+                  </div>
+
+                  <div id="card-actions" class="card-actions justify-end">
+                    <button onclick="my_modal_4.showModal()" class="btn btn-xs sm:btn-md btn-outline">Read</button>
+                    <button onclick="window.location.href = '{% url 'book_detail' book.title book.id %}'" class="btn btn-xs sm:btn-md btn-primary">Details</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-span-1 sm:col-span-5 lg:col-span-8 hover:drop-shadow">
+            <p class="text-3xl text-red-300">No Books Available .........</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    {% include 'weekly_authors.html' %}
+  </div>
+
+  {% comment %}modal{% endcomment %}
+  <dialog id="my_modal_4" class="modal">
+    <div class="modal-box w-11/12 max-w-5xl">
+      <h3 class="text-lg font-bold">Harry Potter</h3>
+      <h1>Embedded PDF Viewer</h1>
+      <embed src="https://css4.pub/2015/icelandic/dictionary.pdf" type="application/pdf" width="100%" height="600px" />
+      <div class="modal-action">
+        <form method="dialog">
+          <button class="btn btn-xs sm:btn-md">Close</button>
+        </form>
+      </div>
+    </div>
+  </dialog>
+{% endblock %}
