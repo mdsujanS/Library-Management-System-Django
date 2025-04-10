@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}
+  Order
+{% endblock %}
+{% block main_content %}
+  <div class="container">
+    <h4 class="text-center mb-5">This is Book Borrow Confirmation Page</h4>
+    <div class="mt-5 mx-auto p-5 text-center" style="border-radius: 9px; border: green solid 2px; width: 35%;">
+      <h4 class="text-success text-xs sm:text-xl">Thanks for Borrowing this book.</h4>
+      <a class="btn btn-xs sm:btn-md btn-outline btn-primary" href="{% url 'user_profile' request.user.username %}">Confirm</a>
+    </div>
+  </div>
+{% endblock %}
