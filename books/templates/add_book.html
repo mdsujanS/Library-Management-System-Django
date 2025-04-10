@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Register
+{% endblock %}
+{% block main_content %}
+  <div class="sm:container sm:mx-auto">
+    <h4 class="text-center">Please Add Book</h4>
+    <form method="post" class="space-y-5">
+      {% csrf_token %}
+
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Input Image</label>
+        {{ form.book_image }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Write Title</label>
+        {{ form.title }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Select Book Author</label>
+        {{ form.author }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Select Book Categories</label>
+        {{ form.categories }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Write Book Content</label>
+        {{ form.book_content }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Write Book Description</label>
+        {{ form.description }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Input ISBN Number</label>
+        {{ form.isbn_number }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Book Price (TK)</label>
+        {{ form.borrow_price }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Stock Quantity</label>
+        {{ form.stk_quantity }}
+      </div>
+      <div class="">
+        <label class="block text-gray-700 text-lg font-bold mb-2" for="amount">Book Is Available</label>
+        {{ form.is_available }}
+      </div>
+      <button class="btn btn-outline" type="submit">Add Book</button>
+    </form>
+    <p class="text-center text-red-500">
+      Note***
+      <small>This Page only access for superuser or site admin</small>***
+    </p>
+  </div>
+{% endblock %}
