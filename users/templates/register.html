@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  User Register
+{% endblock %}
+
+{% block main_content %}
+  <div class="container mx-auto">
+    <form method="post" class="sm:w-1/2 sm:mx-auto space-y-5 p-2">
+      {% csrf_token %}
+
+      <div class="">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ form.username.id_for_label }}">{{ form.username.label }}</label>
+        {{ form.username }}
+      </div>
+
+      <div class="">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+        {{ form.first_name }}
+      </div>
+
+      <div class="">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+        {{ form.last_name }}
+      </div>
+
+      <div class="">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+        {{ form.email }}
+      </div>
+
+      <div class="">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ form.password1.id_for_label }}">{{ form.password1.label }}</label>
+        {{ form.password1 }}
+      </div>
+
+      <div class="">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="{{ form.password2.id_for_label }}">{{ form.password2.label }}</label>
+        {{ form.password2 }}
+      </div>
+
+      <button class="btn btn-outline btn-primary" type="submit">Register</button>
+    </form>
+  </div>
+{% endblock %}
+c

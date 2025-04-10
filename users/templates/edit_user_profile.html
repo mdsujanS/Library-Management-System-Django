@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Edit Profile
+{% endblock %}
+
+{% block main_content %}
+  <div class="sm:container sm:mx-auto">
+    <div class="mockup-browser border-base-300 border">
+      <div class="mockup-browser-toolbar">
+        <div class="input border-base-300 border">https://ourlibrary/users/{{ request.user.username }}/profile/edit</div>
+      </div>
+      <div class="border-base-300 flex justify-center border-t px-4 py-16">
+        Hello! @{{ request.user.username }}
+        <h1 class="mx-2 text-red-500">This section is underconstruction...</h1>
+      </div>
+    </div>
+  </div>
+{% endblock %}

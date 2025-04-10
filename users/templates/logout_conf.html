@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Confirm
+{% endblock %}
+
+{% block main_content %}
+  <div class="mockup-window bg-base-300 border">
+    <div class="bg-base-200 flex justify-center px-4 py-16">
+      <div class="">
+        <form method="post" action="{% url 'user_logout' %}">
+          <h2>Are you sure</h2>
+          {% csrf_token %}
+          <button class="btn btn-outline btn-primary" type="submit">Logout</button>
+        </form>
+        {% comment %} <button class="btn btn-outline btn-accent">Confirm</button> {% endcomment %}
+      </div>
+    </div>
+  </div>
+{% endblock %}
