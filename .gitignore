@@ -1,0 +1,6 @@
+lmsenv
+./library_management_system/.env
+
+db.sqlite3
+
+.env
